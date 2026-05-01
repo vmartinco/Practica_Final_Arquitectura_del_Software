@@ -1,13 +1,13 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Página-1" id="uhRT5hCrmZHCb8nTnanb">
-    <mxGraphModel dx="3496" dy="1840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3162" dy="1610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="pH2Zc8Dd-GFmaDvdlYo4-1" parent="1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=20;fontStyle=1;verticalAlign=middle;align=center;autosizeText=1;" value="Diagrama de Contexto" vertex="1">
           <mxGeometry height="80" width="200" x="314" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="pH2Zc8Dd-GFmaDvdlYo4-4" parent="1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=20;fontStyle=1;verticalAlign=middle;align=center;autosizeText=1;" value="Diagrama de Componentes" vertex="1">
+        <mxCell id="pH2Zc8Dd-GFmaDvdlYo4-4" parent="1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=22;fontStyle=1;verticalAlign=middle;align=center;autosizeText=1;" value="Diagrama de Contenedores" vertex="1">
           <mxGeometry height="80" width="290" x="269" y="950" as="geometry" />
         </mxCell>
         <object placeholders="1" c4Name="Plataforma de Gestión de Actividades para un Centro Cultural" c4Type="Software System" c4Description="Sistema web para gestionar actividades, usuarios internos, monitores y salas." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="MxLXnBY2gdvRP9rrWosc-10">
@@ -108,6 +108,9 @@
         </object>
         <mxCell id="MxLXnBY2gdvRP9rrWosc-35" edge="1" parent="1" source="MxLXnBY2gdvRP9rrWosc-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="MxLXnBY2gdvRP9rrWosc-34">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JpbPlNtX84aFVJzw0naF-1" parent="1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=23;fontStyle=1;verticalAlign=middle;align=center;autosizeText=1;" value="Diagrama de Componentes" vertex="1">
+          <mxGeometry height="80" width="290" x="230" y="1890" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

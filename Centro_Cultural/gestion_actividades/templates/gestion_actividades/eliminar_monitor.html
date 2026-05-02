@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar monitor</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Eliminar monitor</h1>
+
+        <p class="mensaje-eliminar">¿Estás seguro de que quieres eliminar al monitor "{{ monitor.nombre }}"?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Sí, eliminar</button>
+        </form>
+
+        <a class="volver" href="{% url 'detalle_monitor' monitor.id %}">Cancelar</a>
+    </div>
+</body>
+</html>

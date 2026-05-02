@@ -43,7 +43,7 @@ class Actividad(models.Model):
     plazas_disponibles = models.IntegerField()
 
     monitor = models.ForeignKey(Monitor, on_delete=models.CASCADE)
-    usuarios_inscritos = models.ManyToManyField(UsuarioInscrito)
+    usuarios_inscritos = models.ManyToManyField(UsuarioInscrito, blank=True)
     sala_principal = models.ForeignKey(Sala, on_delete=models.CASCADE, related_name='sala_principal_actividad')
     salas_secundarias = models.ManyToManyField(Sala, related_name='salas_secundarias_actividad', blank=True)
 

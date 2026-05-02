@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de actividades</title>
+</head>
+<body>
+    <h1>Actividades del centro cultural</h1>
+
+    <a href="{% url 'nueva_actividad' %}">Crear nueva actividad</a>
+
+    <ul>
+        {% for actividad in actividades %}
+            <li>
+                <a href="{% url 'detalle_actividad' actividad.id %}">
+                    {{ actividad.nombre }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

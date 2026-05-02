@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de actividad</title>
+</head>
+<body>
+    <h1>{{ actividad.nombre }}</h1>
+
+    <p><strong>Tipo:</strong> {{ actividad.tipo }}</p>
+    <p><strong>Horario:</strong> {{ actividad.horario }}</p>
+    <p><strong>Descripción:</strong> {{ actividad.descripcion }}</p>
+    <p><strong>Duración:</strong> {{ actividad.duracion }}</p>
+    <p><strong>Plazas disponibles:</strong> {{ actividad.plazas_disponibles }}</p>
+    <p><strong>Monitor:</strong> {{ actividad.monitor }}</p>
+    <p><strong>Sala principal:</strong> {{ actividad.sala_principal }}</p>
+
+    <a href="{% url 'editar_actividad' actividad.id %}">Editar</a>
+    <a href="{% url 'eliminar_actividad' actividad.id %}">Eliminar</a>
+    <br><br>
+    <a href="{% url 'lista_actividades' %}">Volver al listado</a>
+</body>
+</html>

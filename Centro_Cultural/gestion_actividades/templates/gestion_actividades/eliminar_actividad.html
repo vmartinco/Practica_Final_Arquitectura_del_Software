@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar actividad</title>
+</head>
+<body>
+    <h1>Eliminar actividad</h1>
+
+    <p>¿Estás segura de que quieres eliminar la actividad "{{ actividad.nombre }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+    </form>
+
+    <a href="{% url 'detalle_actividad' actividad.id %}">Cancelar</a>
+</body>
+</html>

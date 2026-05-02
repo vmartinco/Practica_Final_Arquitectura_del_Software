@@ -5,4 +5,4 @@ from .models import Actividad
 class ActividadForm(forms.ModelForm):
     class Meta:
         model = Actividad
-        fields = '__all__'
+        exclude = ['usuarios_inscritos'] #Para que en Nueva Actividad y en Editar no aparezca "Usuarios inscritos"

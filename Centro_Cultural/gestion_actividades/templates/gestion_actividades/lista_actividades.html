@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de actividades</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
 </head>
 <body>
-    <h1>Actividades del centro cultural</h1>
+    <div class="contenedor">
+        <h1>Actividades del centro cultural</h1>
 
-    <a href="{% url 'nueva_actividad' %}">Crear nueva actividad</a>
+        <a href="{% url 'nueva_actividad' %}">Crear nueva actividad</a>
 
-    <ul>
-        {% for actividad in actividades %}
-            <li>
-                <a href="{% url 'detalle_actividad' actividad.id %}">
-                    {{ actividad.nombre }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for actividad in actividades %}
+                <li>
+                    <a href="{% url 'detalle_actividad' actividad.id %}">
+                        {{ actividad.nombre }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

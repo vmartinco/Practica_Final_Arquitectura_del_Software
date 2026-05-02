@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ titulo }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
 </head>
 <body>
-    <h1>{{ titulo }}</h1>
+    <div class="contenedor">
+        <h1>{{ titulo }}</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar</button>
+        </form>
 
-    <a href="{% url 'lista_actividades' %}">Volver al listado</a>
+        <a class="volver" href="{% url 'lista_actividades' %}">Volver al listado</a>
+    </div>
 </body>
 </html>

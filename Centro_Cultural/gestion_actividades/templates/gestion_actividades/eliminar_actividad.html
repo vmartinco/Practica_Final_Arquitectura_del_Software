@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Eliminar actividad</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
 </head>
 <body>
-    <h1>Eliminar actividad</h1>
+    <div class="contenedor">
+        <h1>Eliminar actividad</h1>
 
-    <p>¿Estás segura de que quieres eliminar la actividad "{{ actividad.nombre }}"?</p>
+        <p class="mensaje-eliminar">¿Estás segura de que quieres eliminar la actividad "{{ actividad.nombre }}"?</p>
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Sí, eliminar</button>
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Sí, eliminar</button>
+        </form>
 
-    <a href="{% url 'detalle_actividad' actividad.id %}">Cancelar</a>
+        <a class="volver" href="{% url 'detalle_actividad' actividad.id %}">Cancelar</a>
+    </div>
 </body>
 </html>

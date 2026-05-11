@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Centro Cultural{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
+</head>
+<body>
+    <nav class="menu-principal">
+        <a href="{% url 'index' %}" style="font-weight: bold;">INICIO</a>
+        <a href="{% url 'lista_actividades' %}">Actividades</a>
+        <a href="{% url 'lista_usuarios' %}">Usuarios Inscritos</a>
+        <a href="{% url 'lista_monitores' %}">Monitores</a>
+        <a href="{% url 'menu_salas' %}">Salas</a>
+    </nav>
+
+    <div class="contenedor">
+        {% block contenido %}
+        {% endblock %}
+    </div>
+</body>
+</html>

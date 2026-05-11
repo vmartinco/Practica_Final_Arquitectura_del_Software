@@ -1,0 +1,19 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Lista de Responsables{% endblock %}
+
+{% block contenido %}
+    <h1>Responsables de Sala</h1>
+
+    <a href="{% url 'nuevo_responsable' %}" class="btn btn-nuevo">Añadir nuevo responsable</a>
+
+    <ul style="margin-top: 20px;">
+        {% for r in responsables %}
+            <li>
+                <a href="{% url 'detalle_responsable' r.id %}">{{ r.nombre }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a class="volver" href="{% url 'menu_salas' %}">Volver al Menú de Salas</a>
+{% endblock %}

@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalle de monitor</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
-</head>
-<body>
-    <div class="contenedor">
-        <h1>{{ monitor.nombre }}</h1>
+{% extends 'gestion_actividades/base.html' %}
 
-        <p><strong>Especialización:</strong> {{ monitor.especializacion }}</p>
-        <p><strong>Número de actividades asignadas:</strong> {{ monitor.numero_actividades_asignadas }}</p>
+{% block titulo %}Detalle de monitor{% endblock %}
 
-        <div class="acciones">
-            <a href="{% url 'editar_monitor' monitor.id %}">Editar</a>
-            <a href="{% url 'eliminar_monitor' monitor.id %}">Eliminar</a>
-        </div>
+{% block contenido %}
+    <h1>{{ monitor.nombre }}</h1>
 
-        <a class="volver" href="{% url 'lista_monitores' %}">Volver al listado</a>
+    <p><strong>Especialización:</strong> {{ monitor.especializacion }}</p>
+    <p><strong>Número de actividades asignadas:</strong> {{ monitor.numero_actividades_asignadas }}</p>
+
+    <div class="acciones">
+        <a href="{% url 'editar_monitor' monitor.id %}">Editar</a>
+        <a href="{% url 'eliminar_monitor' monitor.id %}">Eliminar</a>
     </div>
-</body>
-</html>
+
+    <a class="volver" href="{% url 'lista_monitores' %}">Volver al listado</a>
+{% endblock %}

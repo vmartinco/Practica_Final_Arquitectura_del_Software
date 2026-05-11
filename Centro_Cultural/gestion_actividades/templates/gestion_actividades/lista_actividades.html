@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de actividades</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
-</head>
-<body>
-    <div class="contenedor">
-        <h1>Actividades del centro cultural</h1>
+{% extends 'gestion_actividades/base.html' %}
 
-        <a href="{% url 'nueva_actividad' %}">Crear nueva actividad</a>
+{% block titulo %}Lista de actividades{% endblock %}
 
-        <ul>
-            {% for actividad in actividades %}
-                <li>
-                    <a href="{% url 'detalle_actividad' actividad.id %}">
-                        {{ actividad.nombre }}
-                    </a>
-                </li>
+{% block contenido %}
+    <h1>Actividades del centro cultural</h1>
+
+    <a href="{% url 'nueva_actividad' %}">Crear nueva actividad</a>
+
+    <form method="get" class="filtros">
+        <input type="text" name="tipo" value="{{ tipo_actual|default:'' }}">
+
+        <select name="monitor">
+            <option value="">-- Todos los monitores --</option>
+            {% for m in monitores %}
+                <option value="{{ m.id }}" {% if m.id|stringformat:"s" == monitor_actual %}selected{% endif %}>
+                    {{ m.nombre }}
+                </option>
             {% endfor %}
-        </ul>
-    </div>
-</body>
-</html>
+        </select>
+
+        <button type="submit" class="btn">Filtrar</button>
+        <a href="{% url 'lista_actividades' %}" class="limpiar">Limpiar filtros</a>
+    </form>
+
+    <ul>
+        {% for actividad in actividades %}
+            <li>
+                <a href="{% url 'detalle_actividad' actividad.id %}">
+                    {{ actividad.nombre }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

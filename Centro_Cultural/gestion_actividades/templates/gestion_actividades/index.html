@@ -1,0 +1,13 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Menú Principal{% endblock %}
+
+{% block contenido %}
+    <h1>Gestión del Centro Cultural</h1>
+    <div class="menu-grid">
+        <a href="{% url 'lista_actividades' %}" class="tarjeta-menu">📂 Actividades</a>
+        <a href="{% url 'lista_usuarios' %}" class="tarjeta-menu">👥 Usuarios Inscritos</a>
+        <a href="{% url 'lista_monitores' %}" class="tarjeta-menu">👔 Monitores</a>
+        <a href="{% url 'menu_salas' %}" class="tarjeta-menu">🏢 Salas y Responsables</a>
+    </div>
+{% endblock %}

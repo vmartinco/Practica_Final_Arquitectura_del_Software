@@ -1,0 +1,21 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Lista de salas{% endblock %}
+
+{% block contenido %}
+    <h1>Salas del centro cultural</h1>
+
+    <a href="{% url 'nueva_sala' %}">Crear nueva sala</a>
+
+    <ul>
+        {% for sala in salas %}
+            <li>
+                <a href="{% url 'detalle_sala' sala.id %}">
+                    {{ sala.nombre }} ({{ sala.ubicacion }})
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a class="volver" href="{% url 'menu_salas' %}">Volver al Menú de Salas</a>
+{% endblock %}

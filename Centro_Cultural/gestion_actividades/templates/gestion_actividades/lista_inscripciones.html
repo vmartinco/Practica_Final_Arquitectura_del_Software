@@ -1,0 +1,22 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Inscripciones - {{ actividad.nombre }}{% endblock %}
+
+{% block contenido %}
+    <h1>Usuarios inscritos en {{ actividad.nombre }}</h1>
+    <p>Plazas restantes: <strong>{{ actividad.plazas_disponibles }}</strong></p>
+
+    <a href="{% url 'inscribir_usuario' actividad.id %}" class="btn btn-nuevo">Inscribir nuevo usuario</a>
+
+    <ul>
+        {% for usuario in usuarios %}
+            <li>
+                {{ usuario.nombre }} ({{ usuario.email }})
+                <a href="{% url 'eliminar_inscripcion' actividad.id usuario.id %}" class="enlace-eliminar">Cancelar plaza</a>
+            </li>
+        {% empty %}
+            <li>No hay usuarios inscritos todavía.</li>
+        {% endfor %}
+    </ul>
+    <a class="volver" href="{% url 'detalle_actividad' actividad.id %}">Volver a la actividad</a>
+{% endblock %}

@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de usuarios</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
-</head>
-<body>
-    <div class="contenedor">
-        <h1>Usuarios inscritos</h1>
+{% extends 'gestion_actividades/base.html' %}
 
-        <a href="{% url 'nuevo_usuario' %}">Crear nuevo usuario</a>
+{% block titulo %}Lista de usuarios{% endblock %}
 
-        <ul>
-            {% for usuario in usuarios %}
-                <li>
-                    <a href="{% url 'detalle_usuario' usuario.id %}">
-                        {{ usuario.nombre }}
-                    </a>
-                </li>
+{% block contenido %}
+    <h1>Usuarios inscritos</h1>
+
+    <a href="{% url 'nuevo_usuario' %}" class="btn btn-nuevo">Crear nuevo usuario</a>
+
+    <form method="get" class="filtros" style="margin-top: 20px;">
+        <label>Filtrar por actividad:</label>
+        <select name="actividad">
+            <option value="">-- Todas las actividades --</option>
+            {% for a in actividades %}
+                <option value="{{ a.id }}" {% if a.id|stringformat:"s" == actividad_actual %}selected{% endif %}>
+                    {{ a.nombre }}
+                </option>
             {% endfor %}
-        </ul>
-    </div>
-</body>
-</html>
+        </select>
+
+        <button type="submit">Filtrar</button>
+        <a href="{% url 'lista_usuarios' %}" class="limpiar">Ver todos</a>
+    </form>
+
+    <ul>
+        {% for usuario in usuarios %}
+            <li>
+                <a href="{% url 'detalle_usuario' usuario.id %}">
+                    {{ usuario.nombre }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

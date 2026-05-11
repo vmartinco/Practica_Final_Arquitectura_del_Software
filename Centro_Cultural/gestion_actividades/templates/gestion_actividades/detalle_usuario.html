@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalle de usuario</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
-</head>
-<body>
-    <div class="contenedor">
-        <h1>{{ usuario.nombre }}</h1>
+{% extends 'gestion_actividades/base.html' %}
 
-        <p><strong>Edad:</strong> {{ usuario.edad }}</p>
-        <p><strong>Correo electrónico:</strong> {{ usuario.email }}</p>
-        <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+{% block titulo %}Detalle de usuario{% endblock %}
 
-        <div class="acciones">
-            <a href="{% url 'editar_usuario' usuario.id %}">Editar</a>
-            <a href="{% url 'eliminar_usuario' usuario.id %}">Eliminar</a>
-        </div>
+{% block contenido %}
+    <h1>{{ usuario.nombre }}</h1>
 
-        <a class="volver" href="{% url 'lista_usuarios' %}">Volver al listado</a>
+    <p><strong>Edad:</strong> {{ usuario.edad }}</p>
+    <p><strong>Correo electrónico:</strong> {{ usuario.email }}</p>
+    <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+
+    <div class="acciones">
+        <a href="{% url 'editar_usuario' usuario.id %}">Editar</a>
+        <a href="{% url 'eliminar_usuario' usuario.id %}">Eliminar</a>
     </div>
-</body>
-</html>
+
+    <a class="volver" href="{% url 'lista_usuarios' %}">Volver al listado</a>
+{% endblock %}

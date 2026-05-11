@@ -1,0 +1,19 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Inscribir Usuario{% endblock %}
+
+{% block contenido %}
+    <h1>Inscribir usuario en {{ actividad.nombre }}</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Confirmar Inscripción</button>
+    </form>
+
+    <a class="volver" href="{% url 'listar_inscripciones' actividad.id %}">Volver</a>
+{% endblock %}

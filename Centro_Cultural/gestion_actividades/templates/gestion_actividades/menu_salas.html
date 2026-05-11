@@ -1,0 +1,21 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Menú de Salas{% endblock %}
+
+{% block contenido %}
+    <h1>Gestión de Salas y Responsables</h1>
+
+    <div class="menu-flex">
+        <a href="{% url 'lista_salas' %}" class="tarjeta-menu" style="background: #e2e3e5;">
+            <strong>1. Gestión de Salas</strong><br>
+            (Crear, editar, consultar y eliminar las salas del centro)
+        </a>
+
+        <a href="{% url 'lista_responsables' %}" class="tarjeta-menu" style="background: #d1ecf1;">
+            <strong>2. Gestión de Responsables</strong><br>
+            (Gestionar el personal técnico encargado del mantenimiento de las salas)
+        </a>
+    </div>
+
+    <a href="{% url 'index' %}" class="volver">Volver al Menú Principal</a>
+{% endblock %}

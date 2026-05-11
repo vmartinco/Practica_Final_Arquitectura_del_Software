@@ -1,0 +1,16 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Eliminar sala{% endblock %}
+
+{% block contenido %}
+    <h1>Eliminar sala</h1>
+
+    <p class="mensaje-eliminar">¿Estás seguro de que quieres eliminar la sala "{{ sala.nombre }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+    </form>
+
+    <a class="volver" href="{% url 'detalle_sala' sala.id %}">Cancelar</a>
+{% endblock %}

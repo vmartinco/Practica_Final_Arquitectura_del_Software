@@ -1,0 +1,13 @@
+{% extends 'gestion_actividades/base.html' %}
+
+{% block titulo %}Eliminar Responsable{% endblock %}
+
+{% block contenido %}
+    <h1>Eliminar Responsable</h1>
+    <p class="mensaje-eliminar">¿Estás seguro de que quieres eliminar a "{{ responsable.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+    </form>
+    <a class="volver" href="{% url 'detalle_responsable' responsable.id %}">Cancelar</a>
+{% endblock %}

@@ -1,26 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de monitores</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'gestion_actividades/styles.css' %}">
-</head>
-<body>
-    <div class="contenedor">
-        <h1>Monitores</h1>
+{% extends 'gestion_actividades/base.html' %}
 
-        <a href="{% url 'nuevo_monitor' %}">Crear nuevo monitor</a>
+{% block titulo %}Lista de monitores{% endblock %}
 
-        <ul>
-            {% for monitor in monitores %}
-                <li>
-                    <a href="{% url 'detalle_monitor' monitor.id %}">
-                        {{ monitor.nombre }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-</body>
-</html>
+{% block contenido %}
+    <h1>Monitores</h1>
+
+    <a href="{% url 'nuevo_monitor' %}">Crear nuevo monitor</a>
+
+    <ul>
+        {% for monitor in monitores %}
+            <li>
+                <a href="{% url 'detalle_monitor' monitor.id %}">
+                    {{ monitor.nombre }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

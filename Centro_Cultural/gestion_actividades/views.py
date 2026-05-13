@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
+from django.urls import reverse
 
 from .models import Actividad, UsuarioInscrito, Monitor, Sala, ResponsableSala
 from .forms import (ActividadForm, UsuarioInscritoForm, MonitorForm, SalaForm,
@@ -13,12 +14,6 @@ def menu_salas(request):
     return render(request, 'gestion_actividades/menu_salas.html')
 
 #---------------------------------ACTIVIDADES---------------------------------
-"""
-def lista_actividades(request):
-    actividades = Actividad.objects.all()
-    return render(request, 'gestion_actividades/lista_actividades.html', {'actividades': actividades})
-"""
-
 
 def lista_actividades(request):
     tipo = request.GET.get('tipo')
@@ -48,7 +43,11 @@ def nueva_actividad(request):
             return redirect('lista_actividades')
     else:
         form = ActividadForm()
-    return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Nueva Actividad'})
+    return render(request, 'gestion_actividades/formulario.html', {
+        'form': form,
+        'titulo': 'Nueva Actividad',
+        'url_volver': reverse('lista_actividades')
+    })
 
 def detalle_actividad(request, actividad_id):
     try:
@@ -67,7 +66,11 @@ def editar_actividad(request, actividad_id):
                 return redirect('detalle_actividad', actividad_id=actividad.id)
         else:
             form = ActividadForm(instance=actividad)
-        return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Editar Actividad'})
+        return render(request, 'gestion_actividades/formulario.html', {
+            'form': form,
+            'titulo': 'Editar Actividad',
+            'url_volver': reverse('lista_actividades')
+        })
     except Actividad.DoesNotExist:
         return JsonResponse({"error": "Actividad no encontrada"}, status=404)
 
@@ -82,11 +85,7 @@ def eliminar_actividad(request, actividad_id):
         return JsonResponse({"error": "Actividad no encontrada"}, status=404)
 
 #---------------------------------USUARIOS---------------------------------
-"""
-def lista_usuarios(request):
-    usuarios = UsuarioInscrito.objects.all()
-    return render(request, 'gestion_actividades/lista_usuarios.html', {'usuarios': usuarios})
-"""
+
 def lista_usuarios(request):
     actividad_id = request.GET.get('actividad')
 
@@ -111,7 +110,11 @@ def nuevo_usuario(request):
             return redirect('lista_usuarios')
     else:
         form = UsuarioInscritoForm()
-    return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Nuevo Usuario'})
+    return render(request, 'gestion_actividades/formulario.html', {
+        'form': form,
+        'titulo': 'Nuevo Usuario',
+        'url_volver': reverse('lista_usuarios')
+    })
 
 def detalle_usuario(request, usuario_id):
     try:
@@ -130,7 +133,11 @@ def editar_usuario(request, usuario_id):
                 return redirect('detalle_usuario', usuario_id=usuario.id)
         else:
             form = UsuarioInscritoForm(instance=usuario)
-        return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Editar Usuario'})
+        return render(request, 'gestion_actividades/formulario.html', {
+            'form': form,
+            'titulo': 'Editar Usuario',
+            'url_volver': reverse('lista_usuarios')
+        })
     except UsuarioInscrito.DoesNotExist:
         return JsonResponse({"error": "Usuario no encontrado"}, status=404)
 
@@ -158,7 +165,11 @@ def nuevo_monitor(request):
             return redirect('lista_monitores')
     else:
         form = MonitorForm()
-    return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Nuevo Monitor'})
+    return render(request, 'gestion_actividades/formulario.html', {
+        'form': form,
+        'titulo': 'Nuevo Monitor',
+        'url_volver': reverse('lista_monitores')
+    })
 
 def detalle_monitor(request, monitor_id):
     try:
@@ -177,7 +188,11 @@ def editar_monitor(request, monitor_id):
                 return redirect('detalle_monitor', monitor_id=monitor.id)
         else:
             form = MonitorForm(instance=monitor)
-        return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Editar Monitor'})
+        return render(request, 'gestion_actividades/formulario.html', {
+            'form': form,
+            'titulo': 'Editar Monitor',
+            'url_volver': reverse('lista_monitores')
+        })
     except Monitor.DoesNotExist:
         return JsonResponse({"error": "Monitor no encontrado"}, status=404)
 
@@ -205,7 +220,11 @@ def nueva_sala(request):
             return redirect('lista_salas')
     else:
         form = SalaForm()
-    return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Nueva Sala'})
+    return render(request, 'gestion_actividades/formulario.html', {
+        'form': form,
+        'titulo': 'Nueva Sala',
+        'url_volver': reverse('lista_salas')
+    })
 
 def detalle_sala(request, sala_id):
     try:
@@ -224,7 +243,11 @@ def editar_sala(request, sala_id):
                 return redirect('detalle_sala', sala_id=sala.id)
         else:
             form = SalaForm(instance=sala)
-        return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Editar Sala'})
+        return render(request, 'gestion_actividades/formulario.html', {
+            'form': form,
+            'titulo': 'Editar Sala',
+            'url_volver': reverse('lista_salas')
+        })
     except Sala.DoesNotExist:
         return JsonResponse({"error": "Sala no encontrada"}, status=404)
 
@@ -252,7 +275,11 @@ def nuevo_responsable(request):
             return redirect('lista_responsables')
     else:
         form = ResponsableSalaForm()
-    return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Nuevo Responsable de Sala'})
+    return render(request, 'gestion_actividades/formulario.html', {
+        'form': form,
+        'titulo': 'Nuevo Responsable de Sala',
+        'url_volver': reverse('lista_responsables')
+    })
 
 def detalle_responsable(request, responsable_id):
     try:
@@ -271,7 +298,11 @@ def editar_responsable(request, responsable_id):
                 return redirect('detalle_responsable', responsable_id=responsable.id)
         else:
             form = ResponsableSalaForm(instance=responsable)
-        return render(request, 'gestion_actividades/formulario.html', {'form': form, 'titulo': 'Editar Responsable'})
+        return render(request, 'gestion_actividades/formulario.html', {
+            'form': form,
+            'titulo': 'Editar Responsable',
+            'url_volver': reverse('lista_responsables')
+        })
     except ResponsableSala.DoesNotExist:
         return JsonResponse({"error": "Responsable no encontrado"}, status=404)
 

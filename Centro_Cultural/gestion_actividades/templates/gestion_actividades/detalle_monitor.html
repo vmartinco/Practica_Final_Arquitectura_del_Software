@@ -5,13 +5,15 @@
 {% block contenido %}
     <h1>{{ monitor.nombre }}</h1>
 
-    <p><strong>Especialización:</strong> {{ monitor.especializacion }}</p>
-    <p><strong>Número de actividades asignadas:</strong> {{ monitor.numero_actividades_asignadas }}</p>
-
-    <div class="acciones">
-        <a href="{% url 'editar_monitor' monitor.id %}">Editar</a>
-        <a href="{% url 'eliminar_monitor' monitor.id %}">Eliminar</a>
+    <div class="detalle-info">
+        <p><strong>Especialización:</strong> {{ monitor.especialidad }}</p>
+        <p><strong>Número de actividades asignadas:</strong> {{ monitor.actividad_set.count }}</p>
     </div>
 
-    <a class="volver" href="{% url 'lista_monitores' %}">Volver al listado</a>
+    <div class="acciones-grid">
+        <a href="{% url 'editar_monitor' monitor.id %}" class="btn btn-editar">Editar</a>
+        <a href="{% url 'eliminar_monitor' monitor.id %}" class="btn btn-rojo">Eliminar</a>
+        <a href="{% url 'lista_monitores' %}" class="btn btn-volver">Volver al listado</a>
+    </div>
+
 {% endblock %}

@@ -4,12 +4,15 @@ body {
     color: #222;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .contenedor {
     width: 80%;
     max-width: 900px;
-    margin: 40px auto;
+    margin: auto;
     background-color: white;
     padding: 30px;
     border-radius: 10px;
@@ -31,16 +34,15 @@ a:hover {
     text-decoration: underline;
 }
 
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 12px;
-}
-
 form p {
     margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #1f4e79;
 }
 
 input,
@@ -53,45 +55,64 @@ textarea {
     border: 1px solid #bbb;
     border-radius: 6px;
     font-size: 15px;
+    box-sizing: border-box;
 }
 
-button {
+button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: #1f4e79;
-    color: white;
+    color: white !important;
     border: none;
-    padding: 10px 18px;
+    padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 15px;
+    font-weight: bold;
+    text-decoration: none !important;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    line-height: 1.2;
+    vertical-align: middle;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
     background-color: #163a59;
+    opacity: 0.9;
+    text-decoration: none !important;
 }
 
-.acciones {
-    margin-top: 20px;
-    padding-top: 10px;
+button:active,
+.btn:active {
+    transform: scale(0.98);
 }
 
-.acciones a {
-    margin-right: 15px;
+.btn-nuevo, .btn-inscritos {
+    background-color: #2196F3;
 }
 
-.volver {
-    display: inline-block;
-    margin-top: 20px;
+.btn-editar {
+    background-color: #f39c12;
 }
 
-.mensaje-eliminar {
-    margin-bottom: 20px;
-    font-size: 18px;
+.btn-rojo {
+    background-color: #cc0000 !important;
 }
+
+.btn-volver {
+    background-color: #7f8c8d;
+}
+
+.btn-rojo:hover { background-color: #ff0000 !important; }
+.btn-editar:hover { background-color: #e67e22; }
+.btn-volver:hover { background-color: #636e72; }
 
 .menu-principal {
-    background-color: #333;
-    padding: 15px 30px;
-    margin-bottom: 20px;
+    background-color: #1f4e79;
+    padding: 30px 30px;
     display: flex;
     gap: 20px;
 }
@@ -99,10 +120,6 @@ button:hover {
 .menu-principal a {
     color: white;
     font-weight: 500;
-}
-
-.menu-principal a:hover {
-    text-decoration: underline;
 }
 
 .menu-grid {
@@ -121,17 +138,29 @@ button:hover {
 
 .tarjeta-menu {
     padding: 30px;
-    background-color: #eee;
     text-align: center;
-    color: #222;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    color: #1f4e79 !important;
+    border: 1px solid #d1d9e0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
+.tarjeta-gris { background-color: #f8f9fa; }
+.tarjeta-azul { background-color: #e3f2fd; }
+
 .tarjeta-menu:hover {
-    background-color: #e0e0e0;
+    transform: scale(1.02);
     text-decoration: none;
+}
+.tarjeta-gris:hover { background-color: #e9ecef; }
+.tarjeta-azul:hover { background-color: #bbdefb; }
+
+.tarjeta-menu span {
+    color: #555;
+    font-weight: normal;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .filtros {
@@ -146,57 +175,67 @@ button:hover {
     gap: 10px;
 }
 
-.filtros input,
-.filtros select {
-    width: auto;
-    margin-top: 0;
+.lista-datos {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
 }
 
-.btn {
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: inline-block;
-    color: white !important;
-    font-weight: bold;
+.lista-datos li {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-.btn:hover {
+.lista-datos li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #1f4e79;
+}
+
+.lista-datos a {
+    display: block;
+    padding: 16px 20px;
+    color: #1f4e79;
+    font-size: 1.1em;
     text-decoration: none;
-    opacity: 0.9;
 }
 
-.btn-inscritos {
-    background-color: #4CAF50;
+.lista-vacia {
+    padding: 16px 20px;
+    color: #888;
+    font-style: italic;
 }
 
-.btn-nuevo {
-    background-color: #2196F3;
+.detalle-info p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
-.error {
-    color: red;
-    font-weight: bold;
-    margin-left: 10px;
+.detalle-info strong {
+    color: #1f4e79;
+    margin-right: 5px;
 }
 
-.enlace-eliminar {
-    color: #cc0000 !important;
-    margin-left: 20px;
-    font-size: 0.9em;
+.acciones-grid {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
 }
 
-.enlace-eliminar:hover {
-    color: #ff0000 !important;
-    text-decoration: underline;
+.acciones-form {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
 }
 
 .limpiar {
     font-size: 0.8em;
-    margin-left: 10px;
     color: #666;
     font-weight: normal;
-}
-
-.limpiar:hover {
-    color: #1f4e79;
 }

@@ -5,17 +5,22 @@
 {% block contenido %}
     <h1>Salas del centro cultural</h1>
 
-    <a href="{% url 'nueva_sala' %}">Crear nueva sala</a>
+    <a href="{% url 'nueva_sala' %}" class="btn btn-nuevo">Crear nueva sala</a>
 
-    <ul>
+    <ul class="lista-datos">
         {% for sala in salas %}
             <li>
                 <a href="{% url 'detalle_sala' sala.id %}">
                     {{ sala.nombre }} ({{ sala.ubicacion }})
                 </a>
             </li>
+        {% empty %}
+            <li class="lista-vacia">No hay salas registradas todavía.</li>
         {% endfor %}
     </ul>
 
-    <a class="volver" href="{% url 'menu_salas' %}">Volver al Menú de Salas</a>
+    <div class="acciones-grid">
+        <a href="{% url 'menu_salas' %}" class="btn btn-volver">Volver al Menú de Salas</a>
+    </div>
+
 {% endblock %}

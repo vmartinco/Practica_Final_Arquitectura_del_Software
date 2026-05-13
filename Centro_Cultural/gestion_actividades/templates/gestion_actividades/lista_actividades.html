@@ -5,8 +5,6 @@
 {% block contenido %}
     <h1>Actividades del centro cultural</h1>
 
-    <a href="{% url 'nueva_actividad' %}">Crear nueva actividad</a>
-
     <form method="get" class="filtros">
         <input type="text" name="tipo" value="{{ tipo_actual|default:'' }}">
 
@@ -21,15 +19,23 @@
 
         <button type="submit" class="btn">Filtrar</button>
         <a href="{% url 'lista_actividades' %}" class="limpiar">Limpiar filtros</a>
+
+        <a href="{% url 'nueva_actividad' %}" class="btn btn-nuevo">Crear nueva actividad</a>
     </form>
 
-    <ul>
+    <ul class="lista-datos">
         {% for actividad in actividades %}
             <li>
                 <a href="{% url 'detalle_actividad' actividad.id %}">
                     {{ actividad.nombre }}
                 </a>
             </li>
+        {% empty %}
+            <li class="lista-vacia">No hay actividades que coincidan con la búsqueda.</li>
         {% endfor %}
     </ul>
+
+    <div class="acciones-grid">
+        <a href="{% url 'index' %}" class="btn btn-volver">Volver al Menú Principal</a>
+    </div>
 {% endblock %}

@@ -5,15 +5,21 @@
 {% block contenido %}
     <h1>Monitores</h1>
 
-    <a href="{% url 'nuevo_monitor' %}">Crear nuevo monitor</a>
+    <a href="{% url 'nuevo_monitor' %}" class="btn btn-nuevo">Crear nuevo monitor</a>
 
-    <ul>
+    <ul class="lista-datos">
         {% for monitor in monitores %}
             <li>
                 <a href="{% url 'detalle_monitor' monitor.id %}">
                     {{ monitor.nombre }}
                 </a>
             </li>
+        {% empty %}
+            <li class="lista-vacia">No hay monitores registrados todavía.</li>
         {% endfor %}
     </ul>
+
+    <div class="acciones-grid">
+        <a href="{% url 'index' %}" class="btn btn-volver">Volver al Menú Principal</a>
+    </div>
 {% endblock %}

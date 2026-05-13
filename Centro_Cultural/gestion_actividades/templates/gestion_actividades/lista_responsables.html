@@ -7,13 +7,18 @@
 
     <a href="{% url 'nuevo_responsable' %}" class="btn btn-nuevo">Añadir nuevo responsable</a>
 
-    <ul style="margin-top: 20px;">
+    <ul class="lista-datos">
         {% for r in responsables %}
             <li>
                 <a href="{% url 'detalle_responsable' r.id %}">{{ r.nombre }}</a>
             </li>
+        {% empty %}
+            <li class="lista-vacia">No hay responsables asignados todavía.</li>
         {% endfor %}
     </ul>
 
-    <a class="volver" href="{% url 'menu_salas' %}">Volver al Menú de Salas</a>
+    <div class="acciones-grid">
+        <a href="{% url 'menu_salas' %}" class="btn btn-volver">Volver al Menú de Salas</a>
+    </div>
+
 {% endblock %}

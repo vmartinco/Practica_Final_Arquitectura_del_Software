@@ -6,16 +6,18 @@
     <h1>Gestión de Salas y Responsables</h1>
 
     <div class="menu-flex">
-        <a href="{% url 'lista_salas' %}" class="tarjeta-menu" style="background: #e2e3e5;">
+        <a href="{% url 'lista_salas' %}" class="tarjeta-menu tarjeta-gris">
             <strong>1. Gestión de Salas</strong><br>
-            (Crear, editar, consultar y eliminar las salas del centro)
+            <span>(Crear, editar, consultar y eliminar las salas del centro)</span>
         </a>
 
-        <a href="{% url 'lista_responsables' %}" class="tarjeta-menu" style="background: #d1ecf1;">
+        <a href="{% url 'lista_responsables' %}" class="tarjeta-menu tarjeta-azul">
             <strong>2. Gestión de Responsables</strong><br>
-            (Gestionar el personal técnico encargado del mantenimiento de las salas)
+            <span>(Gestionar el personal técnico encargado del mantenimiento de las salas)</span>
         </a>
     </div>
 
-    <a href="{% url 'index' %}" class="volver">Volver al Menú Principal</a>
+    <div class="acciones-grid">
+        <a href="{% url 'index' %}" class="btn btn-volver">Volver al Menú Principal</a>
+    </div>
 {% endblock %}

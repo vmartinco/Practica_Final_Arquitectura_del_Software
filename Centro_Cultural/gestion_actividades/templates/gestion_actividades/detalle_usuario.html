@@ -5,14 +5,16 @@
 {% block contenido %}
     <h1>{{ usuario.nombre }}</h1>
 
-    <p><strong>Edad:</strong> {{ usuario.edad }}</p>
-    <p><strong>Correo electrónico:</strong> {{ usuario.email }}</p>
-    <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
-
-    <div class="acciones">
-        <a href="{% url 'editar_usuario' usuario.id %}">Editar</a>
-        <a href="{% url 'eliminar_usuario' usuario.id %}">Eliminar</a>
+    <div class="detalle-info">
+        <p><strong>Edad:</strong> {{ usuario.edad }}</p>
+        <p><strong>Correo electrónico:</strong> {{ usuario.email }}</p>
+        <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
     </div>
 
-    <a class="volver" href="{% url 'lista_usuarios' %}">Volver al listado</a>
+    <div class="acciones">
+        <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-editar">Editar</a>
+        <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-rojo">Eliminar</a>
+        <a href="{% url 'lista_usuarios' %}" class="btn btn-volver">Volver al listado</a>
+    </div>
+
 {% endblock %}

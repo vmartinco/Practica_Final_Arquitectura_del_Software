@@ -11,7 +11,7 @@
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Sí, cancelar inscripción</button>
+        <button type="submit" class="btn-rojo">Sí, cancelar inscripción</button>
     </form>
 
     <a class="volver" href="{% url 'listar_inscripciones' actividad.id %}">No, volver al listado</a>

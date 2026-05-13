@@ -5,9 +5,7 @@
 {% block contenido %}
     <h1>Usuarios inscritos</h1>
 
-    <a href="{% url 'nuevo_usuario' %}" class="btn btn-nuevo">Crear nuevo usuario</a>
-
-    <form method="get" class="filtros" style="margin-top: 20px;">
+    <form method="get" class="filtros">
         <label>Filtrar por actividad:</label>
         <select name="actividad">
             <option value="">-- Todas las actividades --</option>
@@ -18,17 +16,25 @@
             {% endfor %}
         </select>
 
-        <button type="submit">Filtrar</button>
+        <button type="submit" class="btn">Filtrar</button>
         <a href="{% url 'lista_usuarios' %}" class="limpiar">Ver todos</a>
+
+        <a href="{% url 'nuevo_usuario' %}" class="btn btn-nuevo">Crear nuevo usuario</a>
     </form>
 
-    <ul>
+    <ul class="lista-datos">
         {% for usuario in usuarios %}
             <li>
                 <a href="{% url 'detalle_usuario' usuario.id %}">
                     {{ usuario.nombre }}
                 </a>
             </li>
+        {% empty %}
+            <li class="lista-vacia">No hay usuarios inscritos que coincidan con este filtro.</li>
         {% endfor %}
     </ul>
+
+    <div class="acciones-grid">
+        <a href="{% url 'index' %}" class="btn btn-volver">Volver al Menú Principal</a>
+    </div>
 {% endblock %}

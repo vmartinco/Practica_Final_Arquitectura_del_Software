@@ -8,8 +8,10 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
 
-    <a class="volver" href="{% url 'lista_actividades' %}">Volver al listado</a>
+        <div class="acciones-form">
+            <button type="submit" class="btn">Guardar</button>
+            <a href="{{ url_volver }}" class="btn btn-volver">Cancelar</a>
+        </div>
+    </form>
 {% endblock %}

@@ -9,8 +9,8 @@
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Sí, eliminar</button>
+        <button type="submit" class="btn-rojo">Sí, eliminar</button>
     </form>
 
-    <a class="volver" href="{% url 'detalle_usuario' usuario.id %}">Cancelar</a>
+    <a href="{% url 'detalle_usuario' usuario.id %}" class="btn btn-volver">Cancelar</a>
 {% endblock %}

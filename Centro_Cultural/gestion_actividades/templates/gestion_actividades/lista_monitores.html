@@ -11,7 +11,7 @@
         {% for monitor in monitores %}
             <li>
                 <a href="{% url 'detalle_monitor' monitor.id %}">
-                    {{ monitor.nombre }}
+                   {{ monitor.nombre }} 
                 </a>
             </li>
         {% empty %}

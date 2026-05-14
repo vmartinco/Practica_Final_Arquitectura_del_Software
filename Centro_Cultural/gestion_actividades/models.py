@@ -11,7 +11,10 @@ class ResponsableSala(models.Model):
 class Monitor(models.Model):
     nombre = models.CharField(max_length=100)
     especializacion = models.CharField(max_length=100)
-    numero_actividades_asignadas = models.IntegerField()
+
+    @property
+    def numero_actividades_asignadas(self):
+        return self.actividades.count()
 
     def __str__(self):
         return self.nombre
@@ -42,7 +45,12 @@ class Actividad(models.Model):
     duracion = models.IntegerField()
     plazas_disponibles = models.IntegerField()
 
-    monitor = models.ForeignKey(Monitor, on_delete=models.CASCADE)
+    monitor = models.ForeignKey(
+    Monitor,
+    on_delete=models.CASCADE,
+    related_name='actividades'
+    )
+    
     usuarios_inscritos = models.ManyToManyField(UsuarioInscrito, blank=True)
     sala_principal = models.ForeignKey(Sala, on_delete=models.CASCADE, related_name='sala_principal_actividad')
     salas_secundarias = models.ManyToManyField(Sala, related_name='salas_secundarias_actividad', blank=True)

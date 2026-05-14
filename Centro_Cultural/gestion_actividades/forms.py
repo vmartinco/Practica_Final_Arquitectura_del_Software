@@ -15,7 +15,7 @@ class UsuarioInscritoForm(forms.ModelForm):
 class MonitorForm(forms.ModelForm):
     class Meta:
         model = Monitor
-        fields = '__all__'
+        fields = ['nombre', 'especializacion']
 
 class SalaForm(forms.ModelForm):
     class Meta:

@@ -5,12 +5,23 @@
 {% block contenido %}
     <h1>Eliminar actividad</h1>
 
-    <p class="mensaje-eliminar">¿Estás seguro de que quieres eliminar la actividad "{{ actividad.nombre }}"?</p>
+    <p class="mensaje-eliminar">¿Estás seguro de que quieres eliminar la actividad "<strong>{{ actividad.nombre }}</strong>"?</p>
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn-rojo">Sí, eliminar</button>
-    </form>
+    {% if actividad.usuarios_inscritos.count > 0 %}
+        <div class="alerta-peligro" style="background-color: #fff3cd; color: #856404; padding: 15px; border-left: 5px solid #ffeeba; margin-bottom: 20px; border-radius: 4px;">
+            <p style="margin: 0;">
+                <strong>⚠️ ¡Atención!</strong> Esta actividad tiene <strong>{{ actividad.usuarios_inscritos.count }} usuario(s) inscrito(s)</strong>.
+                Si procedes, la actividad se borrará y sus inscripciones se cancelarán automáticamente (los perfiles de los usuarios no se borrarán).
+            </p>
+        </div>
+    {% endif %}
+    <div class="acciones-form">
+        <form method="post" style="display: inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-rojo">Sí, eliminar</button>
+        </form>
 
-    <a href="{% url 'detalle_actividad' actividad.id %}" class="btn btn-volver">Cancelar</a>
+        <a href="{% url 'detalle_actividad' actividad.id %}" class="btn btn-volver">Cancelar</a>
+    </div>
+
 {% endblock %}
